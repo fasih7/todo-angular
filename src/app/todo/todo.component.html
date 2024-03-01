@@ -1,0 +1,27 @@
+<div class="zelda">
+    <header>
+        <h1>To do List</h1>
+    </header>
+    <form [formGroup]="todoForm" (submit)="addTodoItem()" (select)="setComplete()">
+        <input type="text" class='todo-inputs' id="todoText" formControlName="todoText">
+        <button type="submit" class='todo-button'>
+            <i class='fas fa-plus-square'></i>
+        </button>
+        <div class="select">
+            <select name="todos" class='filter-todos'>
+                <option value="all" (click)="setAll()">All</option>
+                <option value="completed" (click)="setComplete()">Completed</option>
+                <option value="uncompleted" (click)="setIncomplete()">Uncompleted</option>
+            </select>
+        </div>
+    </form>
+    <div class="todo-container">
+        <ul class="todo-list">
+            <div *ngFor="let item of todoItems" [ngClass]="item['isCompleted'] ?'todo completed': 'todo'">
+                <li class="todo-item">{{item['value']}}</li><button class="complete-btn"
+                    (click)="changeCompleteStatus(item)"><i class="fas fa-check"><i></i></i></button><button
+                    class="trash-btn" (click)="deleteTodo(item)"><i class="fas fa-trash"><i></i></i></button>
+            </div>
+        </ul>
+    </div>
+</div>

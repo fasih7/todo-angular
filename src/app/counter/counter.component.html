@@ -1,0 +1,13 @@
+<h3 *ngIf="typesOfShoes.length == 0" style="color: brown; margin-top: 10px;">No counter has been added</h3>
+
+<mat-list role="list">
+    <!-- <mat-list-item *ngFor="let item of typesOfShoes" role="listitem">{{item}}</mat-list-item> -->
+    <mat-list-item *ngFor="let item of typesOfShoes" role="listitem">{{ item["value"] }}
+        <button style="color: green; margin-left: 100px" (click)="add(item)">
+            +
+        </button>
+        <button style="color: orangered; margin: 0 10px" (click)="remove(item)">-</button>
+        <button style="color: red" (click)="delete(item)">x</button>
+    </mat-list-item>
+</mat-list>
+<button (click)="addItem()">Add</button>
